@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 | NGINX vhost example</title>
+
+    <style type="text/css">
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 1170px;
+        padding: 200px 0;
+        margin: 0 auto;
+      }
+
+      /**** Background Hero ****/
+
+      img.scale {
+        position: absolute;
+      }
+      .overlay {
+        width: 100%;
+        min-height: 720px;
+        background: rgba(0,0,0,0.4);
+      }   
+      h1,
+      h2 {
+        margin: 0px 0 10px;
+        font-family: Arial;
+        font-size: 100px;
+        color: #fff;
+        text-shadow: 0 1px 1px #333333;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      .crop-height {
+        /* max-width: 1200px; /* native or declared width of img src (if known) */
+         min-height: 720px;
+         overflow: hidden; 
+      }
+
+      img.scale {
+        display: block; /* corrects small inline gap at bottom of containing div */
+        width: 100%; /* corrects obscure Firefox bug */
+        max-width: 100%;
+        /* just in case, to force correct aspect ratio */
+        height: auto !important;
+        /*width: auto\9; 
+        /* ie8+9 - use modernizr instead of this \9 hack */
+        /* lt ie8 */
+        -ms-interpolation-mode: bicubic;
+         /* optionally force a minimum size if img src size is known: */
+         /* min-height: 320px; /* max-height of .crop-height */
+         /* min-width: 480px; /* proportional to above */ 
+      }
+
+      .bg-image-wedding {
+         /* background-image: url(http://parkerbennett.com/croptop/img/photo-wedding_1200x800.jpg); */
+         /* lt ie8 */
+         -ms-background-position-x: center;
+         -ms-background-position-y: bottom;
+         /* default - may override with classes or media query */
+         background-position: center bottom;
+         /* scale bg image proportionately */
+         background-size: cover;
+         /* ie8 - https://github.com/louisremi/background-size-polyfill */
+         -ms-behavior: url(backgroundsize.min.htc);
+         /* prevent scaling past src width (or not) */
+         /* max-width: 1200px; */ 
+      }
+
+      .bg-center-bottom {
+        /* lt ie8 if needed */
+         /* -ms-background-position-x: center;
+         -ms-background-position-y: bottom; */
+         background-position: center bottom;
+      }
+
+      .bg-center-top {
+        /* lt ie8 if needed */
+         /* -ms-background-position-x: center;
+         -ms-background-position-y: top; */
+         background-position: center top;
+      }
+
+      .bg-center-center {
+        /* lt ie8 if needed */
+         /* -ms-background-position-x: center;
+         -ms-background-position-y: center; */
+         background-position: center center;
+      }
+
+      .bg-position-wedding {
+        /* background position for specific image */
+        /* lt ie8 if needed */
+         /* -ms-background-position-x: 30%;
+         -ms-background-position-y: 60%; */
+         background-position: 30% 60%;
+      }
+
+      .invisible {
+        visibility: hidden; 
+      }
+
+      /* opacity allows user-friendly image saving */
+      .transparent {
+        /* trigger hasLayout for ie filters below */
+         zoom: 1;
+        /* 0 opacity in ms filters still displays layout */
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        filter: alpha(opacity=0);
+         opacity: 0; 
+      }
+
+      /* example media query for smaller non-retina  */
+      @media
+          only screen and (max-device-width : 600px) and (-webkit-max-device-pixel-ratio: 1),
+          only screen and (max-device-width : 600px) and (max-device-pixel-ratio: 1) {
+
+              /* half-sized "proxy" img */
+              /* background-image: url(img/photo-wedding_600x400.jpg); */
+      }
+
+      /* example media query, larger retina devices */
+      @media
+          only screen and (min-device-width : 768px) and (-webkit-min-device-pixel-ratio: 1.5),
+          only screen and (min-device-width : 768px) and (        min-device-pixel-ratio: 1.5) {
+
+          .bg-image-wedding {
+              /* 1.5x larger */
+              /* background-image: url(http://img/photo-wedding_1200x800@1.5x.jpg); */ 
+          }
+      }   
+    </style>
+
+  </head>
+  <body>
+
+    <div class="crop-height bg-center-top" style="background:url(http://i.imgur.com/IFK0XA0.jpg) center center no-repeat;">
+      <img class="scale invisible" src="http://i.imgur.com/IFK0XA0.jpg" alt="Danger Zone! Error 404" />
+      <div class="overlay">
+        <header class="container clearfix">
+          <h1>Welcome to the</h1>
+          <h1>Danger Zone!!</h1>
+          <h1>Error 404</h1>     
+        </header>
+      </div>
+    </div>      
+
+  </body>
+</html>
